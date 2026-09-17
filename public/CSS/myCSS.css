@@ -1,0 +1,25 @@
+body{
+    background-color: #4d524e ;
+}
+h1{
+    background-color: #6092cc ;
+    container-type: inline-size;
+    border: 2px solid black;
+    color: white;
+    font-size: 50px;
+    font-family: Arial;
+}
+p{
+    color: white;
+    font-size: 20px;
+}
+h2{
+    color: white;
+    font-size: 30px;
+}
+footer{
+    border: 2px solid black;
+    background-color: #6092cc ;
+    color: white;
+    font-size: 20px;
+}
