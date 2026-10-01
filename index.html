@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sample Project</title>
-        <link rel="stylesheet" href="public/CSS/myCSS.css">
+        <link rel="stylesheet" href="./public/CSS/myCSS.css">
+        
     </head>
     <body>
         <header class="navbar" role="banner">
@@ -20,15 +21,21 @@
 
             <nav id="navbarMenu" class="navbar_menu" role="navigation" ariea-labelledby="navbarToggle">
                 <ul class="navbar_list">
-                    <li class="navbar_item"><a href="index.html" class="navbar_link">Home</a></li>
-                    <li class="navbar_item"><a href="public/HTML/hello.html" class="navbar_link">Model Viewer</a></li>
-                    <li class="navbar_item"><a href="#" class="navbar_link">Empty</a></li>
+                    <li class="navbar_item"><a href="./index.html" class="navbar_link">Home</a></li>
+                    <li class="navbar_item"><a href="./public/HTML/hello.html" class="navbar_link">Play</a></li>
+                    <li class="navbar_item"><a href="#" class="navbar_link">Design</a></li>
+                    <li class="navbar_item"><a href="#" class="navbar_link">About Us</a></li>
                 </ul>
             </nav>
         </header>
-        <main class="content"> 
-            <h1>Welcome to the JavaScript Games Dev Project</h1>
-            <p>this website is for JavaScript game development.</p>
+        <main class="content">             
+            <section class="content_Hero">
+                <div class="content_Hero_content">
+                    <h2 class="content_Hero_title">Web browser 3d model viewer</h2>
+                    <p class="content_Hero_tagline">this is a placholder for a web browser game</p>
+                    <a href="./public/HTML/hello.html" role="button" class="content_Hero_button">View 3D Model</a>
+                </div>
+            </section>
         </main>
         <footer class="footer">
             <div class="footer_container">
@@ -37,6 +44,6 @@
             </div>
         </footer>
 
-        <script src="public/JS/mobileToggle.js"></script>
+        <script src="./public/JS/mobileToggle.js"></script>
     </body>
 </html>
