@@ -3,38 +3,127 @@ import {
     Scene,
     ArcRotateCamera,
     Vector3,
+    Color3,
     HemisphericLight,
-    MeshBuilder
-} from "@babylonjs/core"
+    DirectionalLight,
+    PointLight,
+    SpotLight,
+    RectAreaLight,
+    MeshBuilder,
+    Mesh,
+    ShadowGenerator,
+    StandardMaterial,
+    PBRMaterial,
+    TransformNode
 
-function createBox(scene: Scene){
+} from "@babylonjs/core"
+import { color } from "bun";
+// create box
+function createBox(scene: Scene)
+{
     let box = MeshBuilder.CreateBox("box",{size: 1}, scene)
-    box.position.y = 3;
+    box.position.y = 0.0;
+    box.position.y = 0.501;
     return box;
 }
-
-function createLight(scene: Scene) {
+// lighting
+function createHemisphereLight(scene: Scene) 
+{
     const light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
-    light.intensity = 0.7;
+    light.intensity = 0.3;
+    light.diffuse = new Color3(1,0,0);
+    light.specular = new Color3(0,1,0);
+    light.groundColor = new Color3(0,1,0);
     return light;
-  }
+}
+
+function createDirectionalLight(scene: Scene) 
+{
+    const light = new DirectionalLight("light", new Vector3(0.5, -0.5, 0.2), scene);
+    light.position = new Vector3(20,40,10)
+    light.intensity = 0.7;
+    light.diffuse = new Color3(0.6,0,0);
+    light.specular = new Color3(0,0.7,0.3);
+    return light;
+}
+
+function createPointLight(scene: Scene) 
+{
+    const light = new PointLight("light", new Vector3(-2.5, 0.2, 0.5), scene);
+    light.intensity = 0.5;
+    light.diffuse = new Color3(0.5,1,1);
+    light.specular = new Color3(0.8,1,1);
+    return light;
+}
   
-  function createSphere(scene: Scene) {
+function createSpotLight(scene: Scene) 
+{
+    const light = new SpotLight("light", new Vector3(2, 1, -3), new Vector3(0,-2,3), Math.PI / 3, 20, scene);
+    light.intensity = 1;
+    light.diffuse = new Color3(1,0,0);
+    light.specular = new Color3(0,1,0);
+    return light;
+}
+
+function createRectArealLight(scene: Scene) 
+{
+  const target = Vector3.Zero();
+  const lightRoot = new TransformNode("AreaLightRoot", scene)
+  const light = new RectAreaLight("areaLight",Vector3.Zero(),3,3,scene)
+
+  const plane = MeshBuilder.CreatePlane("debugLight", {size: 3}, scene)
+
+  light.parent = lightRoot;
+  plane.parent = lightRoot;
+
+  light.intensity = 20;
+  light.diffuse = new Color3(0.7,0.7,1);
+  light.specular = new Color3(0.1,0.3,1);
+
+  const planemat = new StandardMaterial("debugLightMat", scene);
+  planemat.emissiveColor = light.diffuse.clone();
+  planemat.backFaceCulling = false;
+  plane.material = planemat;
+
+  lightRoot.position.set(0,5,-5);
+
+  lightRoot.lookAt(target);
+
+  lightRoot.rotate(Vector3.Up(), Math.PI);
+
+  return light;
+}
+// create sphere
+function createSphere(scene: Scene) 
+{
     let sphere = MeshBuilder.CreateSphere(
       "sphere",
       { diameter: 2, segments: 32 },
       scene,
     );
-    sphere.position.y = 1;
+    sphere.position.y = 2;
+
+    const spheremat = new PBRMaterial("spheremat", scene)
+    spheremat.metallic = 0.0;
+    spheremat.roughness = 0.2;
+    spheremat._albedoColor = Color3.White();
+
+    sphere.material = spheremat;
     return sphere;
-  }
-  
-  function createGround(scene: Scene) {
+}
+ //ground 
+  function createGround(scene: Scene) 
+  {
     let ground = MeshBuilder.CreateGround(
       "ground",
       { width: 6, height: 6 },
       scene,
     );
+    var groundMaterial = new PBRMaterial("groundMaterial", scene);
+    groundMaterial.backFaceCulling = false;
+    groundMaterial.roughness = 0.8;
+    ground.material = groundMaterial;
+    ground.receiveShadows = true;
     return ground;
   }
   
@@ -55,13 +144,35 @@ function createLight(scene: Scene) {
     return camera;
   }
   
-export function createStartScene(engine: Engine) {
+  function createShadows(light: DirectionalLight, sphere : Mesh, box: Mesh){
+    const shadower = new ShadowGenerator(1024, light);
+    const sm : any = shadower.getShadowMap();
+    sm.renderList.push(sphere, box);
+
+    shadower.setDarkness(0.2);
+    shadower.useBlurExponentialShadowMap = true;
+    shadower.blurScale = 4;
+    shadower.blurBoxOffset = 1;
+    shadower.useKernelBlur = true;
+    shadower.blurKernel = 64;
+    shadower.bias = 0;
+    return shadower;
+  }
+
+
+
+export function createStartScene(engine: Engine) 
+{
     let myscene: Scene = new Scene(engine) ;
-    createBox(myscene);
-    createLight(myscene);
-    createSphere(myscene);
+    let box = createBox(myscene);
+    createHemisphereLight(myscene);
+    createPointLight(myscene)
+    createSpotLight(myscene)
+    let d1 =createDirectionalLight(myscene)
+    createRectArealLight(myscene)
+    let sphere = createSphere(myscene);
     createGround(myscene);
     createArcRotateCamera(myscene);
-
+    createShadows(d1,sphere, box)
     return myscene;
-  }
+}
