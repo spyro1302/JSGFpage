@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sample Project</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <link rel="stylesheet" href="./public/CSS/myCSS.css">
-        
+        <link rel="stylesheet" href="./public/CSS/myCSS.css">        
     </head>
     <body>
+        <!-- Navigation bar -->
         <header class="navbar" role="banner">
             <div class="navbar_container">
                 <h1><a href="index.html" class="navbar_brand" aria-label="Homepage">JavaScript Games Dev Project</a></h1> 
@@ -29,7 +29,9 @@
                 </ul>
             </nav>
         </header>
-        <main class="content">             
+        <!-- Main content -->
+        <main class="content">  
+            <!-- Hero section -->           
             <section class="content_Hero">
                 <div class="content_Hero_content">
                     <h2 class="content_Hero_title">Web browser 3d model viewer</h2>
@@ -37,20 +39,91 @@
                     <a href="./public/HTML/hello.html" role="button" class="content_Hero_button">View 3D Model</a>
                 </div>
             </section>
+            <!-- About the project -->
             <section class="bg-gray-900 py-12 text-blue-300 text-left px-4 sm:px-6 lg:px-8">
                 <div class="content_About_content">
                     <h2 class="text-3xl font-extrabold text-blue-500 font-serif overline decoration-double">About the project</h2>
                     <p class="text-xl text-justify text-wrap">This project is a web browser game that allows users to view and interact with 3D models. It is built using JavaScript and WebGL, providing an immersive experience directly in the browser.</p>
                 </div>
-            
+            </section>
+            <!--scenes-->
+            <section class="bg-gray-900 py-12 text-blue-300 text-left px-2 sm:px-6 lg:px-6">
+                <div class="bg-gray-700 font-[sans-serif] my-4">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="text-center">
+                        <h2 class="text-3xl font-extrabold text-gray-800 inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">SCENES</h2>
+                        </div>
+                        <!-- blog grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-16 max-lg:max-w-3xl max-md:max-w-md mx-auto">
+                            <a href="BlogInfo">
+                                <div class="bg-gray-300 cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
+                                <img src="../public/images/nightsky-stars.jpg" alt="Latest Blog" class="w-full h-60 object-cover" />
+                                <div class="p-6">
+                                    <!-- <span class="text-sm block text-gray-400 mb-2">?= $PostDate ? | ?= $Author ?</span> -->
+                                    <h3 class="text-xl font-bold text-gray-800">scene 1</h3>
+                                    <hr class="my-4" />
+                                    <p class="text-gray-400 text-sm">lorem ipsum dolor sit amet</p>
+                                </div>
+                                </div>
+                            </a>
+                            <a href="BlogInfo">
+                                <div class="bg-gray-300 cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
+                                <img src="../public/images/nightsky-stars.jpg" alt="Latest Blog" class="w-full h-60 object-cover" />
+                                <div class="p-6">
+                                    <!-- <span class="text-sm block text-gray-400 mb-2">?= $PostDate ? | ?= $Author ?</span> -->
+                                    <h3 class="text-xl font-bold text-gray-800">scene 2</h3>
+                                    <hr class="my-4" />
+                                    <p class="text-gray-400 text-sm">lorem ipsum dolor sit amet</p>
+                                </div>
+                                </div>
+                            </a>
+                            <a href="BlogInfo">
+                                <div class="bg-gray-300 cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
+                                <img src="../public/images/nightsky-stars.jpg" alt="Latest Blog" class="w-full h-60 object-cover" />
+                                <div class="p-6">
+                                    <!-- <span class="text-sm block text-gray-400 mb-2">?= $PostDate ? | ?= $Author ?</span> -->
+                                    <h3 class="text-xl font-bold text-gray-800">scene 3</h3>
+                                    <hr class="my-4" />
+                                    <p class="text-gray-400 text-sm">lorem ipsum dolor sit amet</p>
+                                </div>
+                                </div>
+                            </a>
+                            <a href="BlogInfo">
+                                <div class="bg-gray-300 cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
+                                <img src="../public/images/nightsky-stars.jpg" alt="Latest Blog" class="w-full h-60 object-cover" />
+                                <div class="p-6">
+                                    <!-- <span class="text-sm block text-gray-400 mb-2">?= $PostDate ? | ?= $Author ?</span> -->
+                                    <h3 class="text-xl font-bold text-gray-800">scene 4</h3>
+                                    <hr class="my-4" />
+                                    <p class="text-gray-400 text-sm">lorem ipsum dolor sit amet</p>
+                                </div>
+                                </div>
+                            </a>
+                            <a href="BlogInfo">
+                                <div class="bg-gray-300 cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
+                                <img src="../public/images/nightsky-stars.jpg" alt="Latest Blog" class="w-full h-60 object-cover" />
+                                <div class="p-6">
+                                    <!-- <span class="text-sm block text-gray-400 mb-2">?= $PostDate ? | ?= $Author ?</span> -->
+                                    <h3 class="text-xl font-bold text-gray-800">scene 5</h3>
+                                    <hr class="my-4" />
+                                    <p class="text-gray-400 text-sm">lorem ipsum dolor sit amet</p>
+                                </div>
+                                </div>
+                            </a>
+                            <!-- Add more blog cards here -->
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </section>
         </main>
+        <!-- Footer -->
         <footer class="footer">
             <div class="footer_container">
                 <p>Contact: <a href="mailto:B01809716@studentmail.uws.ac.uk" class="footer_link">B01809716@studentmail.uws.ac.uk</a></p>
                 <p>© 2026 JavaScript Games Dev Project.</p>
             </div>
         </footer>
-
-        <script src="./public/JS/mobileToggle.js"></script>
+        <script src="./public/JS/MobileToggle.js"></script>
     </body>
 </html>
