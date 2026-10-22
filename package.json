@@ -1,11 +1,12 @@
 {
-  "dependencies": {
-    "@babylonjs/core": "^9.32.0",
-    "@babylonjs/havok": "^1.3.14",
-    "@babylonjs/inspector": "^9.32.0",
-    "@babylonjs/loaders": "^9.32.0"
-  },
+  "name": "jsgfpage",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
   "devDependencies": {
-    "typescript": "^7.0.2"
+    "@types/bun": "^1.4.3"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
   }
 }
